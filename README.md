@@ -1,5 +1,7 @@
 # ☕ Cafe Insights
 
+**Live demo:** https://dipayan8k.github.io/cafe-insights/ (the app runs entirely in your browser; the first load downloads about 30 MB)
+
 Upload a cafe's POS export and get four answers an owner actually acts on:
 
 | Question | Feature | Method |
@@ -28,7 +30,7 @@ Regenerate the sample data or run the tests:
 .venv/bin/pytest -q
 ```
 
-## The website (Netlify)
+## The website (GitHub Pages or Netlify)
 
 The public site is fully static. The Streamlit app runs **inside the visitor's browser** via [stlite](https://github.com/whitphx/stlite) (Python on WebAssembly), so uploaded sales files never reach any server. That's what makes the privacy promise true, and it's why it works on Netlify, which can't run a Python server.
 
@@ -51,7 +53,15 @@ python3 scripts/build_site.py && python3 scripts/serve_dist.py
 
 Then open http://localhost:8888. The first app load downloads about 30 MB of Python libraries.
 
-**Deploy**
+**Deploy to GitHub Pages** (current live site)
+
+```bash
+scripts/publish_pages.sh
+```
+
+This builds with `--target github` (links prefixed with `/cafe-insights/`, the security policy placed in each page because GitHub Pages can't send custom headers) and pushes the result to the `gh-pages` branch, which GitHub Pages serves.
+
+**Deploy to Netlify**
 
 1. Fill in every `TODO` in `site_config.json`: legal name, address, Grievance Officer, emails, domain, effective date. The Netlify build (`--strict`) refuses to publish while any TODO remains.
 2. Push the repo to GitHub, then in Netlify choose *Add new site → Import an existing project*. `netlify.toml` already sets the build command and the `dist` publish folder.
