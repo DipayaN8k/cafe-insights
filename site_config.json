@@ -1,0 +1,19 @@
+{
+  "_comment": "Business details used on every page. The Netlify build refuses to publish while any TODO remains. Add a full postal address and phone number before taking payments.",
+  "BRAND": "Cafe Insights",
+  "DOMAIN": "cafe-insights.netlify.app",
+  "LEGAL_NAME": "Dipayan Sayak",
+  "ENTITY_TYPE": "individual (sole proprietor)",
+  "ADDRESS": "Kolkata, West Bengal, India",
+  "CITY": "Kolkata",
+  "STATE": "West Bengal",
+  "CONTACT_EMAIL": "business.dipayan.sayak@gmail.com",
+  "CONTACT_PHONE": "on request by email",
+  "GRIEVANCE_OFFICER": "Dipayan Sayak",
+  "GRIEVANCE_DESIGNATION": "Grievance Officer",
+  "GRIEVANCE_EMAIL": "business.dipayan.sayak@gmail.com",
+  "EMAIL_PROVIDER": "Google (Gmail)",
+  "GSTIN": "Not registered (turnover below GST threshold)",
+  "EFFECTIVE_DATE": "31 October 2026",
+  "SUPPORT_HOURS": "Monday to Saturday, 10:00 to 18:00 IST"
+}

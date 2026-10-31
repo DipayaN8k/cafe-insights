@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact and grievances | {{BRAND}}</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+{{> header}}
+<main id="main">
+  <div class="doc-head"><div class="wrap">
+    <h1>Contact and grievances</h1>
+    <p>We reply within 48 hours, {{SUPPORT_HOURS}}.</p>
+  </div></div>
+  <div class="doc"><div class="wrap">
+    <nav class="toc" aria-label="On this page">
+      <ol>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#contact">General questions</a></li>
+        <li><a href="#grievance">Grievance Officer</a></li>
+        <li><a href="#rights">Data protection requests</a></li>
+      </ol>
+    </nav>
+    <article>
+      <h2 id="about">1. About us</h2>
+      <p>{{BRAND}} helps cafes and small food businesses understand their sales: which items earn the most, what to keep in stock, how much to prep and what to sell together. It is built and operated by {{LEGAL_NAME}} ({{ENTITY_TYPE}}) in {{CITY}}, India.</p>
+      <div class="contact-card">
+        <p><strong>{{LEGAL_NAME}}</strong></p>
+        <p>Registered and operating address: {{ADDRESS}}</p>
+        <p>GSTIN: {{GSTIN}}</p>
+      </div>
+
+      <h2 id="contact">2. General questions and support</h2>
+      <div class="contact-card">
+        <p>Email: <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a></p>
+        <p>Phone: {{CONTACT_PHONE}}</p>
+        <p>Hours: {{SUPPORT_HOURS}}</p>
+      </div>
+      <p>Please don't email sales files: the app is designed so we never need to see them. If something isn't working, a description or screenshot with figures hidden is enough.</p>
+
+      <h2 id="grievance">3. Grievance Officer</h2>
+      <p>For complaints about the Service, about how personal data is handled, or about a payment, contact our Grievance Officer. This role is required by the Digital Personal Data Protection Act, 2023, Rule 5(9) of the SPDI Rules, 2011 and the Consumer Protection (E-Commerce) Rules, 2020.</p>
+      <div class="contact-card">
+        <p><strong>{{GRIEVANCE_OFFICER}}</strong>, {{GRIEVANCE_DESIGNATION}}</p>
+        <p>{{LEGAL_NAME}}, {{ADDRESS}}</p>
+        <p>Email: <a href="mailto:{{GRIEVANCE_EMAIL}}">{{GRIEVANCE_EMAIL}}</a></p>
+        <p>Phone: {{CONTACT_PHONE}}</p>
+      </div>
+      <p>Your complaint will be acknowledged within 48 hours and resolved within 30 days. Please include your name, how to reach you, what happened, and what outcome you are looking for. If a data protection complaint isn't resolved to your satisfaction, you may approach the Data Protection Board of India.</p>
+
+      <h2 id="rights">4. Data protection requests</h2>
+      <p>To access, correct or erase personal data we hold about you, withdraw consent, or nominate someone to act for you, email the Grievance Officer with the subject line "Data request". See section 10 of our <a href="/privacy/#rights">Privacy policy</a> for details.</p>
+    </article>
+  </div></div>
+</main>
+{{> footer}}
+</body>
+</html>

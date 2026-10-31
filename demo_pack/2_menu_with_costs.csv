@@ -1,0 +1,19 @@
+Item,Category,Price,Cost
+Espresso,Hot Drinks,120,25
+Cappuccino,Hot Drinks,180,40
+Cafe Latte,Hot Drinks,190,45
+Masala Chai,Hot Drinks,80,12
+Hot Chocolate,Hot Drinks,200,60
+Iced Latte,Cold Drinks,210,50
+Cold Brew,Cold Drinks,220,45
+Iced Tea,Cold Drinks,150,20
+Mango Smoothie,Cold Drinks,230,80
+Cold Coffee,Cold Drinks,190,45
+Butter Croissant,Bakery,150,55
+Chocolate Muffin,Bakery,130,40
+Banana Bread,Bakery,140,35
+Blueberry Cheesecake,Desserts,280,120
+Veg Sandwich,Food,220,80
+Chicken Sandwich,Food,260,110
+Paneer Wrap,Food,240,95
+Avocado Toast,Food,320,230

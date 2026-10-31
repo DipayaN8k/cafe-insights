@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Delivery policy | {{BRAND}}</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+{{> header}}
+<main id="main">
+  <div class="doc-head"><div class="wrap">
+    <h1>Shipping and delivery policy</h1>
+    <p>Effective {{EFFECTIVE_DATE}}.</p>
+  </div></div>
+  <div class="doc"><div class="wrap">
+    <nav class="toc" aria-label="On this page">
+      <ol>
+        <li><a href="#digital">Digital service only</a></li>
+        <li><a href="#access">When you get access</a></li>
+        <li><a href="#problems">If something doesn't arrive</a></li>
+      </ol>
+    </nav>
+    <article>
+      <h2 id="digital">1. Digital service only</h2>
+      <p>{{BRAND}} is online software. Nothing physical is shipped, and there are no shipping or delivery charges.</p>
+      <h2 id="access">2. When you get access</h2>
+      <ul>
+        <li><strong>Free features:</strong> available instantly at <a href="/app/">{{DOMAIN}}/app</a>.</li>
+        <li><strong>Paid plans (once launched):</strong> activated immediately after successful payment. A payment receipt and GST invoice, where applicable, are emailed to the address you give at checkout within 24 hours.</li>
+        <li><strong>One-time reports (once launched):</strong> shown on screen immediately, with a downloadable copy.</li>
+      </ul>
+      <h2 id="problems">3. If something doesn't arrive</h2>
+      <p>If you paid and can't access what you bought, or didn't get a receipt within 24 hours, email <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a> with your transaction ID. We'll respond within 48 hours. If we can't give you access, you'll be refunded as described in our <a href="/refund/">Cancellation and refund policy</a>.</p>
+    </article>
+  </div></div>
+</main>
+{{> footer}}
+</body>
+</html>

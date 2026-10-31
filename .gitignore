@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+dist/
+.netlify/
+
+# local tooling and personal notes
+.claude/
+docs/
+scripts/build_guide.py
+*.zip
+
+# large third-party data: download it yourself (see datasets/README.md)
+datasets/maven_coffee_shop/
+datasets/**/*.arff

@@ -1,0 +1,35 @@
+# Static site: the analysis runs in the visitor's browser (stlite + Pyodide),
+# so Netlify only serves files. No functions, no database, no server-side Python.
+
+[build]
+  command = "python3 scripts/build_site.py --strict"
+  publish = "dist"
+
+# Security headers for every page.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+# The app page runs Python on WebAssembly, which needs eval for WASM, web workers,
+# and downloads from the package CDNs plus the weather API. Nothing else is allowed.
+[[headers]]
+  for = "/app/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdn.jsdelivr.net; worker-src 'self' blob: data: https://cdn.jsdelivr.net; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://pypi.org https://files.pythonhosted.org https://api.open-meteo.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https://cdn.jsdelivr.net; frame-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
+
+[[headers]]
+  for = "/app/files/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

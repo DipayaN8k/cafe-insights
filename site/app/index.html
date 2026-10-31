@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>{{BRAND}} app</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@{{STLITE_VERSION}}/build/stlite.css">
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body { background: #fff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; display: flex; flex-direction: column; }
+    /* Streamlit fills its nearest positioned ancestor, so give it a box below our bar. */
+    #root { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+    #loading + #root { visibility: hidden; }
+    .bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; height: 44px;
+           background: #21332b; color: #e8efe9; font-size: 14px; }
+    .bar a { color: #e8efe9; text-decoration: none; font-weight: 600; }
+    .bar span { color: #b4c4ba; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #loading { max-width: 520px; margin: 12vh auto 0; padding: 0 16px; color: #33413a; line-height: 1.5; }
+    #loading h1 { font-size: 1.3rem; margin: 0 0 8px; }
+    #loading .meter { height: 6px; background: #e1e8e3; border-radius: 3px; overflow: hidden; margin: 18px 0; }
+    #loading .meter i { display: block; height: 100%; width: 35%; background: #df9f12; border-radius: 3px; animation: slide 1.4s ease-in-out infinite; }
+    @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+    @media (prefers-reduced-motion: reduce) { #loading .meter i { animation: none; width: 100%; opacity: .5; } }
+    @media (prefers-color-scheme: dark) { body { background: #0e1117; } #loading { color: #c9d4ce; } #loading .meter { background: #26302b; } }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <a href="/">← {{BRAND}}</a>
+    <span>🔒 Runs in your browser. Your files are never uploaded.</span>
+  </div>
+  <div id="loading" role="status">
+    <h1>Starting the analysis engine…</h1>
+    <div class="meter"><i></i></div>
+    <p>The first visit downloads about 30 MB of analysis software, which can take 20–40 seconds on mobile data. Your browser keeps it for next time.</p>
+  </div>
+  <div id="root"></div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@{{STLITE_VERSION}}/build/stlite.js";
+
+    const files = {{APP_FILES_JSON}};
+    const root = document.getElementById("root");
+    mount({
+      requirements: {{REQUIREMENTS_JSON}},
+      entrypoint: "app.py",
+      files,
+      streamlitConfig: {
+        "client.toolbarMode": "viewer",
+        "theme.light.primaryColor": "#2a78d6",
+        "theme.dark.primaryColor": "#3987e5",
+      },
+    }, root);
+
+    // Keep our loading note until the app's sidebar exists (Streamlit's grey placeholder appears much earlier).
+    const loading = document.getElementById("loading");
+    const reveal = () => loading.isConnected && loading.remove();
+    new MutationObserver((_, obs) => {
+      // Reveal on success, or on a boot error so the visitor sees what went wrong.
+      if (root.querySelector("[data-testid='stSidebar']") || root.textContent.includes("Error during booting")) {
+        reveal(); obs.disconnect();
+      }
+    }).observe(root, { childList: true, subtree: true });
+    setTimeout(reveal, 120000);
+  </script>
+</body>
+</html>
