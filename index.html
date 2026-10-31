@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cafe Insights: which menu items make you money</title>
+  <meta name="description" content="Upload your cafe's billing export and see which items earn the most, what to keep in stock, how much to prep each day and which combos to offer. Analysed in your browser; your data is never uploaded.">
+  <link rel="icon" href="/cafe-insights/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/cafe-insights/assets/fonts/bricolage-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/cafe-insights/assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="/cafe-insights/" aria-label="Cafe Insights home">
+      <svg viewBox="0 0 32 32" aria-hidden="true" fill="none">
+        <path d="M5 13h18v6a8 8 0 0 1-8 8h-2a8 8 0 0 1-8-8v-6Z" fill="#df9f12"/>
+        <path d="M23 15h2.5a3.5 3.5 0 0 1 0 7H22" stroke="#df9f12" stroke-width="2.4"/>
+        <path d="M9 10V7M14 10V4M19 10V6" stroke="#e8efe9" stroke-width="2.4" stroke-linecap="round"/>
+      </svg>
+      Cafe Insights
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a class="hide-sm" href="/cafe-insights/#how">How it works</a>
+      <a class="hide-sm" href="/cafe-insights/#privacy">Privacy</a>
+      <a class="hide-sm" href="/cafe-insights/#pricing">Pricing</a>
+      <a class="btn btn-primary" href="/cafe-insights/app/">Open the app</a>
+    </nav>
+  </div>
+</header>
+
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Find out which menu items actually make you money.</h1>
+        <p class="lede">Upload the sales export from your billing app. In a couple of minutes you get a profit map of your menu, a daily prep plan and combos your customers already want.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="/cafe-insights/app/">Try it with a sample cafe</a>
+          <a class="btn btn-ghost" href="/cafe-insights/app/?upload=1">Analyse my own sales</a>
+        </div>
+        <p class="assurance">
+          <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5 3 4.5v5c0 4.2 2.9 7.8 7 9 4.1-1.2 7-4.8 7-9v-5l-7-3Zm-1.1 12.3-3.2-3.2 1.4-1.4 1.8 1.8 4.2-4.2 1.4 1.4-5.6 5.6Z"/></svg>
+          Your file is analysed inside your browser. It never reaches our servers, and customer names or phone numbers are stripped out automatically.
+        </p>
+      </div>
+
+      <figure class="receipt" aria-label="Example: a cafe bill annotated with what the analysis found">
+        <div class="r-head">
+          <strong>Sample Cafe, Bandra</strong>
+          What your bill says, and what it means
+        </div>
+        <div class="r-line plow">
+          <span>Masala Chai</span><span>₹80</span>
+          <span class="r-note"><b>Best seller, thin margin.</b> Earns ₹68 a cup against a ₹120 menu average. Try a ₹10 price rise.</span>
+        </div>
+        <div class="r-line star">
+          <span>Cappuccino</span><span>₹180</span>
+          <span class="r-note"><b>Star.</b> Popular and profitable. Keep it front and centre, never discount it.</span>
+        </div>
+        <div class="r-line puzzle">
+          <span>Cold Brew</span><span>₹220</span>
+          <span class="r-note"><b>Hidden earner.</b> Highest margin on the menu, rarely ordered. Ask staff to recommend it on hot days.</span>
+        </div>
+        <div class="r-line dog">
+          <span>Avocado Toast</span><span>₹320</span>
+          <span class="r-note"><b>Costs ₹230 to make,</b> sells 3 a day. Rework the recipe or take it off.</span>
+        </div>
+        <div class="r-line plow">
+          <span>Butter Croissant</span><span>₹150</span>
+          <span class="r-note"><b>Bake 28% fewer on Mondays.</b> Office regulars skip Monday mornings.</span>
+        </div>
+        <p class="r-foot">1 in 3 cappuccino orders already includes a croissant. Offer it every time.</p>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block" id="learn">
+    <div class="wrap">
+      <h2>Four answers from the data you already have</h2>
+      <p class="intro">Your billing app records every sale. It just doesn't tell you what to do about it.</p>
+      <dl class="learn">
+        <div>
+          <dt>Which items to keep, fix or drop</dt>
+          <dd>Every item placed by how often it sells and how much it earns per plate, using the menu engineering method restaurants have relied on for decades.
+            <q>“Paneer Wrap is a Star. Banana Bread is costing you shelf space.”</q></dd>
+        </div>
+        <div>
+          <dt>What must never run out</dt>
+          <dd>The handful of items that bring in most of your revenue, with a simple stocking rule for each.
+            <q>“10 of your 18 items make 81% of your revenue.”</q></dd>
+        </div>
+        <div>
+          <dt>How much to prep each day</dt>
+          <dd>A seven-day plan per item that accounts for the weekday, public holidays and tomorrow's weather, with the reason behind each number.
+            <q>“Saturday: make 41% more cold coffee. It will be 33°C.”</q></dd>
+        </div>
+        <div>
+          <dt>Combos your customers already want</dt>
+          <dd>Pairs that are bought together far more than chance, and whether to bundle them at a price or simply have staff suggest them.
+            <q>“Iced Latte buyers pick up cheesecake 6 times more often than chance.”</q></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="intro">No installation, no account, no sales calls.</p>
+      <ol class="steps">
+        <li>
+          <h3>Export your sales</h3>
+          <p>Download the item-wise sales report from Petpooja, Vyapar, myBillBook or any billing app, as Excel or CSV. Add your menu with each item's cost to unlock profit.</p>
+        </li>
+        <li>
+          <h3>Open it here</h3>
+          <p>The app cleans up the export for you: spelling variations, blank rows, duplicates and unfamiliar column names.</p>
+        </li>
+        <li>
+          <h3>Act on the advice</h3>
+          <p>Every finding comes with a plain next step. If there isn't enough history yet, the app says so instead of guessing.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="privacy">
+    <div class="wrap">
+      <h2>Your sales file stays on your device</h2>
+      <p class="intro">Most analytics tools ask you to upload your business data to their servers. This one sends the analysis to you instead.</p>
+      <div class="privacy-split">
+        <div class="zone device">
+          <h3>On your phone or laptop</h3>
+          <ul>
+            <li>Your sales and menu files</li>
+            <li>All cleaning, calculations and charts</li>
+            <li>Everything is cleared when you close the tab</li>
+          </ul>
+        </div>
+        <div class="zone ours">
+          <h3>What reaches the internet</h3>
+          <ul>
+            <li>Your browser downloads the app itself</li>
+            <li>If you turn on live weather, only your rounded map coordinates go to the weather service</li>
+            <li>Nothing from your sales, ever</li>
+          </ul>
+        </div>
+      </div>
+      <p style="margin-top:22px"><a href="/cafe-insights/privacy/">Read the privacy policy</a>, written to India's Digital Personal Data Protection Act, 2023.</p>
+    </div>
+  </section>
+
+  <section class="block" id="pricing">
+    <div class="wrap">
+      <h2>Pricing</h2>
+      <div class="price">
+        <span class="amount">Free</span>
+        <span class="note">during early access. No card, no account.</span>
+      </div>
+      <ul class="included">
+        <li>Menu profit map for every item</li>
+        <li>Stock priorities with stocking rules</li>
+        <li>Seven-day prep plan with live weather</li>
+        <li>Combo and upsell suggestions</li>
+        <li>Unlimited uploads</li>
+        <li>Excel and CSV exports from any billing app</li>
+      </ul>
+      <p class="intro" style="margin-top:28px">Paid plans with weekly summaries are planned. We'll announce prices before anything is charged, and early users will hear first.</p>
+    </div>
+  </section>
+
+  <section class="block faq" id="faq">
+    <div class="wrap">
+      <h2>Questions owners ask</h2>
+      <details>
+        <summary>Do you see my sales figures?</summary>
+        <p>No. The analysis runs in your browser using WebAssembly, so your file is never sent to us. We couldn't look at it even if we wanted to.</p>
+      </details>
+      <details>
+        <summary>Which billing apps does it work with?</summary>
+        <p>Any app that can export item-wise sales to Excel or CSV. Common column names like "Bill No", "Item Name", "Qty" and "Rate" are recognised automatically.</p>
+      </details>
+      <details>
+        <summary>I opened my cafe last week. Can I use it?</summary>
+        <p>Not yet, and we'd rather tell you that than guess. Record every sale for four weeks and note what each item costs you. After that the insights unlock.</p>
+      </details>
+      <details>
+        <summary>Why does it ask for item costs?</summary>
+        <p>Revenue alone hides the truth: a best-seller can be your least profitable item. With costs, the menu map ranks items by what they actually earn.</p>
+      </details>
+      <details>
+        <summary>Does it work on a phone?</summary>
+        <p>Yes. The first load takes around 20 seconds while the analysis engine downloads; after that your browser keeps it ready.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <h2>Cafe Insights</h2>
+      <p>Sales insights for cafes and small food businesses. Your sales files are analysed on your own device and never uploaded to us.</p>
+    </div>
+    <div>
+      <h2>Policies</h2>
+      <ul>
+        <li><a href="/cafe-insights/privacy/">Privacy policy</a></li>
+        <li><a href="/cafe-insights/terms/">Terms and conditions</a></li>
+        <li><a href="/cafe-insights/refund/">Cancellation and refunds</a></li>
+        <li><a href="/cafe-insights/delivery/">Delivery policy</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <ul>
+        <li><a href="/cafe-insights/contact/">Contact and grievances</a></li>
+        <li><a href="mailto:business.dipayan.sayak@gmail.com">business.dipayan.sayak@gmail.com</a></li>
+        <li>Grievance Officer: Dipayan Sayak</li>
+      </ul>
+    </div>
+    <p class="legal-line">© 2026 Dipayan Sayak. Cafe Insights is operated from Kolkata, India.</p>
+  </div>
+</footer>
+
+</body>
+</html>

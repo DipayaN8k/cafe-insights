@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdn.jsdelivr.net; worker-src 'self' blob: data: https://cdn.jsdelivr.net; connect-src 'self' data: blob: https://cdn.jsdelivr.net https://pypi.org https://files.pythonhosted.org https://api.open-meteo.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self' data: https://cdn.jsdelivr.net; img-src 'self' data: blob: https://cdn.jsdelivr.net; frame-src 'self' blob:; base-uri 'self'; form-action 'self'; object-src 'none'">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cafe Insights app</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/cafe-insights/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@stlite/browser@1.12.0/build/stlite.css">
+  <style>
+    html, body { margin: 0; height: 100%; }
+    body { background: #fff; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; display: flex; flex-direction: column; }
+    /* Streamlit fills its nearest positioned ancestor, so give it a box below our bar. */
+    #root { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+    #loading + #root { visibility: hidden; }
+    .bar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 16px; height: 44px;
+           background: #21332b; color: #e8efe9; font-size: 14px; }
+    .bar a { color: #e8efe9; text-decoration: none; font-weight: 600; }
+    .bar span { color: #b4c4ba; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    #loading { max-width: 520px; margin: 12vh auto 0; padding: 0 16px; color: #33413a; line-height: 1.5; }
+    #loading h1 { font-size: 1.3rem; margin: 0 0 8px; }
+    #loading .meter { height: 6px; background: #e1e8e3; border-radius: 3px; overflow: hidden; margin: 18px 0; }
+    #loading .meter i { display: block; height: 100%; width: 35%; background: #df9f12; border-radius: 3px; animation: slide 1.4s ease-in-out infinite; }
+    @keyframes slide { from { transform: translateX(-100%); } to { transform: translateX(300%); } }
+    @media (prefers-reduced-motion: reduce) { #loading .meter i { animation: none; width: 100%; opacity: .5; } }
+    @media (prefers-color-scheme: dark) { body { background: #0e1117; } #loading { color: #c9d4ce; } #loading .meter { background: #26302b; } }
+  </style>
+</head>
+<body>
+  <div class="bar">
+    <a href="/cafe-insights/">← Cafe Insights</a>
+    <span>🔒 Runs in your browser. Your files are never uploaded.</span>
+  </div>
+  <div id="loading" role="status">
+    <h1>Starting the analysis engine…</h1>
+    <div class="meter"><i></i></div>
+    <p>The first visit downloads about 30 MB of analysis software, which can take 20–40 seconds on mobile data. Your browser keeps it for next time.</p>
+  </div>
+  <div id="root"></div>
+  <script type="module">
+    import { mount } from "https://cdn.jsdelivr.net/npm/@stlite/browser@1.12.0/build/stlite.js";
+
+    const files = {
+  "app.py": {
+    "url": "files/app.py"
+  },
+  "ui.py": {
+    "url": "files/ui.py"
+  },
+  "cafe_insights/__init__.py": {
+    "url": "files/cafe_insights/__init__.py"
+  },
+  "cafe_insights/abc_analysis.py": {
+    "url": "files/cafe_insights/abc_analysis.py"
+  },
+  "cafe_insights/basket.py": {
+    "url": "files/cafe_insights/basket.py"
+  },
+  "cafe_insights/data.py": {
+    "url": "files/cafe_insights/data.py"
+  },
+  "cafe_insights/forecast.py": {
+    "url": "files/cafe_insights/forecast.py"
+  },
+  "cafe_insights/menu_engineering.py": {
+    "url": "files/cafe_insights/menu_engineering.py"
+  },
+  "cafe_insights/readiness.py": {
+    "url": "files/cafe_insights/readiness.py"
+  },
+  "cafe_insights/text.py": {
+    "url": "files/cafe_insights/text.py"
+  },
+  "cafe_insights/weather.py": {
+    "url": "files/cafe_insights/weather.py"
+  },
+  "sample_data/menu.csv": {
+    "url": "files/sample_data/menu.csv"
+  },
+  "sample_data/sales.csv": {
+    "url": "files/sample_data/sales.csv"
+  },
+  "sample_data/weather.csv": {
+    "url": "files/sample_data/weather.csv"
+  }
+};
+    const root = document.getElementById("root");
+    mount({
+      requirements: ["pandas", "numpy", "scikit-learn", "duckdb", "plotly==7.1.0", "holidays==0.107", "openpyxl==3.1.5"],
+      entrypoint: "app.py",
+      files,
+      streamlitConfig: {
+        "client.toolbarMode": "viewer",
+        "theme.light.primaryColor": "#2a78d6",
+        "theme.dark.primaryColor": "#3987e5",
+      },
+    }, root);
+
+    // Keep our loading note until the app's sidebar exists (Streamlit's grey placeholder appears much earlier).
+    const loading = document.getElementById("loading");
+    const reveal = () => loading.isConnected && loading.remove();
+    new MutationObserver((_, obs) => {
+      // Reveal on success, or on a boot error so the visitor sees what went wrong.
+      if (root.querySelector("[data-testid='stSidebar']") || root.textContent.includes("Error during booting")) {
+        reveal(); obs.disconnect();
+      }
+    }).observe(root, { childList: true, subtree: true });
+    setTimeout(reveal, 120000);
+  </script>
+</body>
+</html>
